@@ -1,0 +1,31 @@
+[package]
+name = "todolist"
+version = "1.0.0"
+description = "本地待办清单"
+authors = ["Cheng"]
+edition = "2021"
+rust-version = "1.77.2"
+
+[lib]
+# Tauri 2 要求 lib 与 bin 同名后缀约定；这个名字会被 main.rs 引用
+name = "todolist_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = ["tray-icon"] }
+tauri-plugin-sql = { version = "2", features = ["sqlite"] }
+tauri-plugin-single-instance = "2"
+tauri-plugin-notification = "2"
+tauri-plugin-global-shortcut = "2"
+chrono = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true

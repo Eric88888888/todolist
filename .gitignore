@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# build output
+dist/
+src-tauri/target/
+
+# logs & local files
+*.log
+.DS_Store
+Thumbs.db
