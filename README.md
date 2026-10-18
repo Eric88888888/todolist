@@ -260,6 +260,19 @@ CREATE TABLE subtask (
 实现：`tauri-plugin-global-shortcut` 在 Rust 侧注册，按下时 `show()` + `emit("quick-add")`；
 前端收到事件后聚焦输入框，添加完成再调 `hide_main_window` 命令收回去（走命令而不是 JS 窗口 API，省掉一层权限白名单）。
 
+## 运行环境
+
+| 项 | 要求 |
+| --- | --- |
+| 系统 | Windows 10 1809 及以上 / Windows 11（x64） |
+| WebView2 | Win11 自带；Win10 缺失时**安装包会自动下载一次**（需联网） |
+| 管理员权限 | **不需要**（NSIS 以 currentUser 安装到 %LOCALAPPDATA%） |
+| 其它运行时 | **无**。不需要 .NET / Java / Node，装好即可离线使用 |
+| 磁盘 | 安装约 10 MB；数据库与备份在 %APPDATA%，卸载不删 |
+| 内存 | 常驻几十 MB（复用系统 WebView2，不打包浏览器内核） |
+
+> 绿色单文件版（	odolist.exe）**不会**自动装 WebView2，需要系统里已经存在。
+
 ## 开发与构建
 
 前置：Node.js 20+、Rust stable（MSVC 工具链）、WebView2 Runtime（Win11 自带）。
