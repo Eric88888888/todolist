@@ -1,4 +1,4 @@
-﻿name: Release
+name: Release
 
 # 打 tag（v1.0.0 这种）就自动出 Windows 安装包并建一个草稿 Release；
 # 也可以在 Actions 页面手动触发一次。
